@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yiyang Lu · 个人主页</title>
+    <style>
+        /* ========== 全局重置 & 字体 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #fafafa;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 50px 60px;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ========== 标题区 ========== */
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .header .affiliation {
+            font-size: 15px;
+            color: #777;
+            margin-bottom: 16px;
+        }
+
+        .header .affiliation a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+
+        .header .affiliation a:hover {
+            text-decoration: underline;
+        }
+
+        .header .bio {
+            font-size: 15px;
+            color: #333;
+            margin: 16px 0 6px 0;
+            line-height: 1.8;
+        }
+
+        .header .links {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .header .links a {
+            color: #0077cc;
+            text-decoration: none;
+            margin-right: 16px;
+        }
+
+        .header .links a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            margin: 30px 0 28px 0;
+            border: 0;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        /* ========== 章节标题 ========== */
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.3px;
+        }
+
+        /* ========== Education ========== */
+        .edu-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .edu-icon {
+            width: 36px;
+            height: 36px;
+            background: #eef2f7;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .edu-content {
+            font-size: 15px;
+        }
+
+        .edu-content .school {
+            font-weight: 600;
+        }
+
+        .edu-content .meta {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* ========== Publications ========== */
+        .pub-item {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 28px;
+            align-items: flex-start;
+        }
+
+        .pub-teaser {
+            width: 100px;
+            height: 67px;
+            flex-shrink: 0;
+            background: #eef2f7;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .pub-teaser img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pub-info {
+            flex: 1;
+        }
+
+        .pub-title {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+
+        .pub-authors {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 2px;
+        }
+
+        .pub-authors b {
+            font-weight: 600;
+            color: #000;
+        }
+
+        .pub-venue {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+
+        .pub-links a {
+            font-size: 13px;
+            color: #0077cc;
+            text-decoration: none;
+            margin-right: 12px;
+        }
+
+        .pub-links a:hover {
+            text-decoration: underline;
+        }
+
+        .pub-note {
+            font-size: 13px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        /* ========== Awards ========== */
+        .award-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .award-icon {
+            width: 36px;
+            height: 36px;
+            background: #eef2f7;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .award-content {
+            font-size: 15px;
+        }
+
+        .award-content .name {
+            font-weight: 600;
+        }
+
+        .award-content .desc {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 640px) {
+            .container {
+                padding: 24px 18px;
+            }
+
+            .pub-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .pub-teaser {
+                width: 100%;
+                height: 120px;
+            }
+
+            .header h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ============================================ -->
+        <!-- 1. 头部：姓名 + 简介 + 链接                   -->
+        <!-- ============================================ -->
+        <div class="header">
+            <h1>Yiyang Lu</h1>
+            <div class="subtitle">Sophomore · Computer Science @ IIIS, Tsinghua</div>
+            <div class="affiliation">
+                Intern @ MIT CSAIL · advised by <a href="#">Prof. Kaiming He</a>
+            </div>
+
+            <div class="bio">
+                I am a sophomore majoring in Computer Science at the IIIS, Tsinghua University.
+                Currently, I am an intern at MIT CSAIL, supervised by Professor Kaiming He.
+                My research interests lie in computer vision and deep generative models.
+                I am particularly fascinated by simple yet effective model designs.
+            </div>
+
+            <div class="bio">
+                Before entering college, I competed in the Physics Olympiad during high school
+                and won a gold medal in the 39th CPhO. Afterward, I spent one preparatory year
+                at IIIS, Tsinghua University, where I built a solid foundation in the mathematical
+                principles underlying computer science and deep learning.
+            </div>
+
+            <div class="bio" style="margin-bottom:6px;">
+                Although I am still early in my research journey, I am eager to explore opportunities
+                in both academia and industry. I also enjoy connecting with people who share
+                similar interests. Feel free to reach out if you'd like to connect!
+            </div>
+
+            <div class="links">
+                <a href="#">📄 Resume</a>
+                <a href="#">GitHub</a>
+                <a href="#">Google Scholar</a>
+                <a href="#">Twitter</a>
+                <a href="#">Email</a>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- ============================================ -->
+        <!-- 2. Education                                  -->
+        <!-- ============================================ -->
+        <div class="section-title">Education</div>
+
+        <div class="edu-item">
+            <div class="edu-icon">🎓</div>
+            <div class="edu-content">
+                <div class="school">IIIS, Tsinghua University</div>
+                <div>Undergraduate Student · Beijing, China · Sep 2024 – Present</div>
+                <div class="meta">Major GPA: 4.00/4.00 · 13/21 A+ (Top ~5%) · 8/21 A (Top ~25%)</div>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- ============================================ -->
+        <!-- 3. Publications                               -->
+        <!-- ============================================ -->
+        <div class="section-title">Publications</div>
+
+        <!-- 论文 1 -->
+        <div class="pub-item">
+            <div class="pub-teaser">
+                <!-- 放你的图片: <img src="assets/teaser1.jpg" alt="teaser" /> -->
+                <span>🖼️</span>
+            </div>
+            <div class="pub-info">
+                <div class="pub-title">
+                    A Minimalist Baseline for Text-to-Image Generation
+                </div>
+                <div class="pub-authors">
+                    Xianbang Wang<sup>†</sup>, Hanhong Zhao<sup>‡</sup>, <b>Yiyang Lu</b><sup>‡</sup>,
+                    Kangyang Zhou, Linrui Ma, Kaiming He<sup>§</sup>
+                </div>
+                <div class="pub-venue">Blog post, 2026</div>
+                <div class="pub-links">
+                    <a href="#">[Project Page]</a>
+                    <a href="#">[PyTorch]</a>
+                    <a href="#">[JAX]</a>
+                </div>
+                <div class="pub-note">† Project lead · ‡ Core contributor · § Supervisor</div>
+            </div>
+        </div>
+
+        <!-- 论文 2 -->
+        <div class="pub-item">
+            <div class="pub-teaser"><span>🖼️</span></div>
+            <div class="pub-info">
+                <div class="pub-title">ELF: Embedded Language Flows</div>
+                <div class="pub-authors">
+                    Keya Hu*, Linlu Qiu*, <b>Yiyang Lu</b>, Hanhong Zhao, Tianhong Li,
+                    Yoon Kim, Jacob Andreas, Kaiming He
+                </div>
+                <div class="pub-venue">arXiv preprint, 2026</div>
+                <div class="pub-links">
+                    <a href="#">[Paper]</a>
+                    <a href="#">[arXiv]</a>
+                    <a href="#">[Code]</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 论文 3 -->
+        <div class="pub-item">
+            <div class="pub-teaser"><span>🖼️</span></div>
+            <div class="pub-info">
+                <div class="pub-title">Pixel Mean Flows: One-step Latent-free Image Generation</div>
+                <div class="pub-authors">
+                    <b>Yiyang Lu</b>*, Susie Lu*, Qiao Sun*, Hanhong Zhao*, Zhicheng Jiang,
+                    Xianbang Wang, Tianhong Li, Zhengyang Geng, Kaiming He
+                </div>
+                <div class="pub-venue">ICML 2026</div>
+                <div class="pub-links">
+                    <a href="#">[Paper]</a>
+                    <a href="#">[arXiv]</a>
+                    <a href="#">[Code]</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 论文 4 -->
+        <div class="pub-item">
+            <div class="pub-teaser"><span>🖼️</span></div>
+            <div class="pub-info">
+                <div class="pub-title">Bidirectional Normalizing Flow: From Data to Noise and Back</div>
+                <div class="pub-authors">
+                    <b>Yiyang Lu</b>*<sup>†</sup>, Qiao Sun*<sup>†</sup>, Xianbang Wang*,
+                    Zhicheng Jiang, Hanhong Zhao, Kaiming He
+                </div>
+                <div class="pub-venue">CVPR 2026 <strong style="color:#c0392b;">(Highlight)</strong></div>
+                <div class="pub-links">
+                    <a href="#">[Paper]</a>
+                    <a href="#">[arXiv]</a>
+                    <a href="#">[Code]</a>
+                </div>
+                <div class="pub-note">* Equal technical contribution · † Project lead</div>
+            </div>
+        </div>
+
+        <!-- 论文 5 -->
+        <div class="pub-item">
+            <div class="pub-teaser"><span>🖼️</span></div>
+            <div class="pub-info">
+                <div class="pub-title">Improved Mean Flows: On the Challenges of Fastforward Generative Models</div>
+                <div class="pub-authors">
+                    Zhengyang Geng*, <b>Yiyang Lu</b>*, Zongze Wu, Eli Shechtman,
+                    J. Zico Kolter, Kaiming He
+                </div>
+                <div class="pub-venue">CVPR 2026 <strong style="color:#c0392b;">(Highlight)</strong></div>
+                <div class="pub-links">
+                    <a href="#">[Paper]</a>
+                    <a href="#">[arXiv]</a>
+                    <a href="#">[Code]</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 论文 6 -->
+        <div class="pub-item">
+            <div class="pub-teaser"><span>🖼️</span></div>
+            <div class="pub-info">
+                <div class="pub-title">H³DP: Triply-Hierarchical Diffusion Policy for Visuomotor Learning</div>
+                <div class="pub-authors">
+                    <b>Yiyang Lu</b>*, Yufeng Tian*, Zhecheng Yuan*, Xianbang Wang,
+                    Pu Hua, Zhengrong Xue, Huazhe Xu
+                </div>
+                <div class="pub-venue">ICLR 2026</div>
+                <div class="pub-links">
+                    <a href="#">[Project Page]</a>
+                    <a href="#">[Paper]</a>
+                    <a href="#">[arXiv]</a>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- ============================================ -->
+        <!-- 4. Awards                                     -->
+        <!-- ============================================ -->
+        <div class="section-title">Selected Awards</div>
+
+        <div class="award-item">
+            <div class="award-icon">🏆</div>
+            <div class="award-content">
+                <div class="name">SenseTime Scholarship</div>
+                <div class="desc">Top 30 Undergraduates Nationwide · SenseTime, 2026</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <div class="award-icon">⭐</div>
+            <div class="award-content">
+                <div class="name">Sparking Program</div>
+                <div class="desc">Top 1% in Tsinghua · Tsinghua University, 2026</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <div class="award-icon">🎖️</div>
+            <div class="award-content">
+                <div class="name">National Scholarship</div>
+                <div class="desc">Top Scholarship in China · China, 2025</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <div class="award-icon">🥇</div>
+            <div class="award-content">
+                <div class="name">Freshman Scholarship</div>
+                <div class="desc">Scholarship for Outstanding Freshmen · Tsinghua University, 2024</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <div class="award-icon">🏅</div>
+            <div class="award-content">
+                <div class="name">39th Chinese Physics Olympiad (CPhO)</div>
+                <div class="desc">Gold Medal (Top 10) · Chinese Physics Olympiad, 2022</div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /container -->
+
+</body>
+</html>
